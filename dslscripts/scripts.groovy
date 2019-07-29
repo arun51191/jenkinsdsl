@@ -45,16 +45,11 @@ job('job-dsl-deploy') {
       }
 }
 
-listView('List View DSLs') {
-    jobs {
-        regex('job-dsl-.+')
-    }
-    columns {
-        status()
-        name()
-        lastSuccess()
-        lastFailure()
-        lastDuration()
-        buildButton()
+deliveryPipelineView('job-dsl delivery pipeline') {
+    showAggregatedPipeline true
+    enableManualTriggers true
+    pipelineInstances 5
+    pipelines {
+        component('job-dsl delivery pipeline', 'job-dsl-checkout')
     }
 }
