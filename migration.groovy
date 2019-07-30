@@ -1,3 +1,4 @@
+import hudson.AbortException
 def src = System.getenv("S_ENV")
 def dest   = System.getenv("D_ENV")
 def database = System.getenv("Database")                
