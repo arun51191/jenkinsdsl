@@ -1,3 +1,4 @@
+import hudson.model.*
 def src = System.getenv("S_ENV")
 def dest   = System.getenv("D_ENV")
 def database = System.getenv("Database")                
@@ -14,7 +15,7 @@ try {
   }
  catch (e) {
   if (autoCancelled) {
-    currentBuild.currentResult = 'SUCCESS'
+    currentBuild.result = 'SUCCESS'
     // return here instead of throwing error to keep the build "green"
     return
   }
