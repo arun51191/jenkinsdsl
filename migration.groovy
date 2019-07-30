@@ -1,4 +1,7 @@
 import hudson.model.*
+import hudson.AbortException
+import hudson.console.HyperlinkNote
+import java.util.concurrent.CancellationException
 def src = System.getenv("S_ENV")
 def dest   = System.getenv("D_ENV")
 def database = System.getenv("Database")                
