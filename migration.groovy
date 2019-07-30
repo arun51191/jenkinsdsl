@@ -44,6 +44,6 @@ def pa3 = new ParametersAction([
 ])
 
 // add variable to current job
-Thread.currentThread().executable.addAction(p1)
-Thread.currentThread().executable.addAction(p2)
-Thread.currentThread().executable.addAction(p3)
+Thread.currentThread().executable.addAction(pa1)
+Thread.currentThread().executable.addAction(pa2)
+Thread.currentThread().executable.addAction(pa3)
