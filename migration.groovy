@@ -7,7 +7,7 @@ print "Datbase name = ${database}\n\n"
 def autoCancelled = false
 
 try {
-    if (your condition) {
+    if (${src}==${dest}) {
       autoCancelled = true
       error('Aborting the build.')
     }
