@@ -4,6 +4,5 @@ def database = System.getenv("Database")
 print "\nSource database = ${src}\n\n"
 print "Destination database = ${dest}\n\n"
 print "Datbase name = ${database}\n\n"
-if(${src}==${dest}){
-  error('Source and Destination environments should not be same')
-}
+assert ${src}==${dest} : "Build failed because of the source and target databases shouldn't be same"
+
