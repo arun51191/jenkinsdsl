@@ -4,8 +4,20 @@ def database = System.getenv("Database")
 print "\nSource database = ${src}\n\n"
 print "Destination database = ${dest}\n\n"
 print "Datbase name = ${database}\n\n"
-if( ${src} == ${dest} ) {
-   print "\n\n. Please choose different source and target environments"
-   currentBuild.result = 'SUCCESS'
-   return
+def autoCancelled = false
+
+try {
+    if (your condition) {
+      autoCancelled = true
+      error('Aborting the build.')
+    }
+  }
+ catch (e) {
+  if (autoCancelled) {
+    currentBuild.currentResult = 'SUCCESS'
+    // return here instead of throwing error to keep the build "green"
+    return
+  }
+  // normal error handling
+  throw e
 }
