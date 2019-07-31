@@ -13,7 +13,7 @@ if [ $S_ENV != $D_ENV ]; then
     export SOURCE_PW=$uatpass
 
   else
-    export SOURCE_DB="'myint'.cyscy6raao4x.ap-south-1.rds.amazonaws.com
+    export SOURCE_DB="'myint'.cyscy6raao4x.ap-south-1.rds.amazonaws.com"
     export SOURCE_USER=$intuser
     export SOURCE_PW=$intpass
   fi
