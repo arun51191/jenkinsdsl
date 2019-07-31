@@ -3,36 +3,36 @@ NOW=$(date +'%d-%m-%Y-%H:%M:%S')
 if [ $S_ENV != $D_ENV ]; then
 
   if [ $S_ENV == "dev" ]; then
-    export SOURCE_DB = "dev.cyscy6raao4x.ap-south-1.rds.amazonaws.com"
-    export SOURCE_USER = $devuser
-    export SOURCE_PW = $devpass
+    export SOURCE_DB="\"dev\".cyscy6raao4x.ap-south-1.rds.amazonaws.com"
+    export SOURCE_USER=$devuser
+    export SOURCE_PW=$devpass
  
   elif [ $S_ENV == "uat" ]; then 
-    export SOURCE_DB = "uat.cyscy6raao4x.ap-south-1.rds.amazonaws.com"
-    export SOURCE_USER = $uatuser
-    export SOURCE_PW = $uatpass
+    export SOURCE_DB="\"uat\".cyscy6raao4x.ap-south-1.rds.amazonaws.com"
+    export SOURCE_USER=$uatuser
+    export SOURCE_PW=$uatpass
 
   else
-    export SOURCE_DB = "myint.cyscy6raao4x.ap-south-1.rds.amazonaws.com"
-    export SOURCE_USER = $intuser
-    export SOURCE_PW = $intpass
+    export SOURCE_DB="\"myint\".cyscy6raao4x.ap-south-1.rds.amazonaws.com"
+    export SOURCE_USER=$intuser
+    export SOURCE_PW=$intpass
   fi
 
   if [ $D_ENV == "dev" ]; then
-    export TARGET_DB = "dev.cyscy6raao4x.ap-south-1.rds.amazonaws.com"
-    export TARGET_USER = $devuser
-    export TARGET_PW = $devpass
+    export TARGET_DB="\"dev\".cyscy6raao4x.ap-south-1.rds.amazonaws.com"
+    export TARGET_USER=$devuser
+    export TARGET_PW=$devpass
 
   elif [ $D_ENV == "uat" ]; then 
-    export TARGET_DB= "uat.cyscy6raao4x.ap-south-1.rds.amazonaws.com"
-    export TARGET_USER = $uatuser
-    export TARGET_PW   = $uatpass
+    export TARGET_DB="\"uat\".cyscy6raao4x.ap-south-1.rds.amazonaws.com"
+    export TARGET_USER=$uatuser
+    export TARGET_PW=$uatpass
 
   else
 
-    export TARGET_DB= "myint.cyscy6raao4x.ap-south-1.rds.amazonaws.com"
-    export TARGET_USER = $intuser
-    export TARGET_PW = $intpass
+    export TARGET_DB="\"myint\".cyscy6raao4x.ap-south-1.rds.amazonaws.com"
+    export TARGET_USER=$intuser
+    export TARGET_PW=$intpass
 
   fi
 
