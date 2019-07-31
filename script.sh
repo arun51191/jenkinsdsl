@@ -1,6 +1,6 @@
 #!/bin/bash -e
 NOW=$(date +'%d-%m-%Y-%H:%M:%S')
-if [ $S_ENV != $D_ENV]; then
+if [ $S_ENV != $D_ENV ]; then
 
   if [ $S_ENV == "dev" ]; then
     SOURCE_DB = "dev.cyscy6raao4x.ap-south-1.rds.amazonaws.com"
