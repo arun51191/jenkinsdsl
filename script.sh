@@ -1,4 +1,5 @@
 #!/bin/bash -e
+RED='\033[0;31m'
 NOW=$(date +'%d-%m-%Y-%H:%M:%S')
 if [ $S_ENV != $D_ENV || $DATABASE!=""]; then
 
@@ -67,7 +68,7 @@ if [ $S_ENV != $D_ENV || $DATABASE!=""]; then
 
      else
 
-        echo -e "Restoration failed for $DATABASE on $TARGET_DB"
+        echo -e "${RED} Restoration failed for $DATABASE on $TARGET_DB ${RED}"
 
         exit 1
 
@@ -75,7 +76,7 @@ if [ $S_ENV != $D_ENV || $DATABASE!=""]; then
 
   else
 
-    echo -e "Database backup failed for $DATABASE from $SOURCE_DB"
+    echo -e "${RED} Database backup failed for $DATABASE from $SOURCE_DB ${RED}"
 
     exit 1
 
@@ -84,7 +85,7 @@ if [ $S_ENV != $D_ENV || $DATABASE!=""]; then
   exit 0
 
 else 
-    echo -e "Source and target hosts shouldn't be same AND  database parameter shouldn't be empty"
+    echo -e "${RED} Source and target hosts shouldn't be same AND  database parameter shouldn't be empty ${RED}"
 
     exit 1
 fi
