@@ -14,11 +14,6 @@ if (src==dest||database=="") {
 
 def env = System.getenv()
 
-print "\n\nEnvironment variables before:"
-env.each{
-println it
-} 
-
 def credentials = "RADEV"
 def source = "dev-hostname"
 def target   = "dev-hostname"
@@ -54,9 +49,11 @@ Thread.currentThread().executable.addAction(pa1)
 Thread.currentThread().executable.addAction(pa2)
 Thread.currentThread().executable.addAction(pa3)
 
+def sout = new StringBuffer(), serr = new StringBuffer()
 
-print "\n\nEnvironment variables after:"
-env.each{
-println it
-} 
+def proc ='./script.sh'.execute()
+
+proc.consumeProcessOutput(sout, serr)
+proc.waitForOrKill(1000)
+println sout
 
