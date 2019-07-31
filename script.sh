@@ -1,6 +1,6 @@
 #!/bin/bash -e
 NOW=$(date +'%d-%m-%Y-%H:%M:%S')
-if [ $S_ENV != $D_ENV ]; then
+if [ $S_ENV != $D_ENV || $DATABASE!=""]; then
 
   if [ $S_ENV == "RA_DEV" ]; then
     export SOURCE_DB="dev.cyscy6raao4x.ap-south-1.rds.amazonaws.com"
@@ -84,7 +84,7 @@ if [ $S_ENV != $D_ENV ]; then
   exit 0
 
 else 
-    echo -e "$SOURCE_DB should not be same as $TARGET_DB"
+    echo -e "$S_ENV should not be same as $S_ENV and database name shouldn't be empty"
 
     exit 1
 fi
