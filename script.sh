@@ -1,7 +1,7 @@
 #!/bin/bash -e
 RED='\033[0;31m'
 NOW=$(date +'%d-%m-%Y-%H:%M:%S')
-if [ $S_ENV != $D_ENV || $DATABASE != "" ]; then
+if [ $S_ENV != $D_ENV ||! -z $DATABASE ]; then
 
   if [ $S_ENV == "RA_DEV" ]; then
     export SOURCE_DB="dev.cyscy6raao4x.ap-south-1.rds.amazonaws.com"
