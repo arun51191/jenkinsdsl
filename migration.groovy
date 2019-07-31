@@ -13,6 +13,12 @@ if (src==dest||database=="") {
 }
 
 def env = System.getenv()
+
+print "\n\nEnvironment variables before:"
+env.each{
+println it
+} 
+
 def credentials = "RADEV"
 def source = "dev-hostname"
 def target   = "dev-hostname"
@@ -47,3 +53,10 @@ def pa3 = new ParametersAction([
 Thread.currentThread().executable.addAction(pa1)
 Thread.currentThread().executable.addAction(pa2)
 Thread.currentThread().executable.addAction(pa3)
+
+
+print "\n\nEnvironment variables after:"
+env.each{
+println it
+} 
+
