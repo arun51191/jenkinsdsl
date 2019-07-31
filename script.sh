@@ -84,7 +84,7 @@ if [ $S_ENV != $D_ENV || $DATABASE!=""]; then
   exit 0
 
 else 
-    echo -e "source database should not be same as target and database name shouldn't be empty"
+    echo -e "Source and target hosts shouldn't be same AND  database parameter shouldn't be empty"
 
     exit 1
 fi
