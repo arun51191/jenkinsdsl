@@ -10,8 +10,9 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
   target_pass=($devpass $uatpass $intpass)
   db_hosts=(dev.cyscy6raao4x.ap-south-1.rds.amazonaws.com uat.cyscy6raao4x.ap-south-1.rds.amazonaws.com myint.cyscy6raao4x.ap-south-1.rds.amazonaws.com)
   i=0
+  len = ${#environments[*]}
 
-  while [ $i -lt "$environments" ]
+  while [ $i -lt $len ]
   do
     if [environments[$i] == $S_ENV]; then
       export SOURCE_USER = source_users[$i]
@@ -22,7 +23,7 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
   done
 
   i = 0
-  while [ $i -lt "$environments" ]
+  while [ $i -lt $len ]
   do
     if [environments[$i] == $D_ENV]; then
       export TARGET_USER = target_users[$i]
