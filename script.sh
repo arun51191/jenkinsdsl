@@ -13,7 +13,7 @@ if [ $S_ENV != $D_ENV ||! -z $DATABASE ]; then
 
   while [ $i -lt $environments ]
   do
-    if [environments[$i] == $S_ENV] then
+    if [environments[$i] == $S_ENV]; then
       export SOURCE_USER = source_users[$i]
       export SOURCE_PW = source_pass[$i]
       export SOURCE_DB = db_hosts[$i]
@@ -24,7 +24,7 @@ if [ $S_ENV != $D_ENV ||! -z $DATABASE ]; then
   i = 0
   while [ $i -lt $environments ]
   do
-    if [environments[$i] == $D_ENV] then
+    if [environments[$i] == $D_ENV]; then
       export TARGET_USER = target_users[$i]
       export TARGET_PW = target_pass[$i]
       export TARGET_DB = db_hosts[$i]
