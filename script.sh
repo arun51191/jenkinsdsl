@@ -21,6 +21,7 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
       export SOURCE_DB = db_hosts[$i]
     fi
     let "i++"
+    echo -e "$i"
   done
  
   i=0
