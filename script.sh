@@ -14,18 +14,18 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
   do
     echo -e "'$environments[$i]}'\n\n"
     echo -e "$S_ENV\n\n"
-    if [ $"{environments[$i]}" == $S_ENV ]; then
+    if [ "${environments[$i]}" == $S_ENV ]; then
       echo -e "\n\ncondition success"
-      export SOURCE_USER = source_users[$i]
-      export SOURCE_PW = source_pass[$i]
-      export SOURCE_DB = db_hosts[$i]
+      export SOURCE_USER = ${source_users[$i]}
+      export SOURCE_PW = ${source_pass[$i}
+      export SOURCE_DB = ${db_hosts[$i]}
     fi
     i=$((i+1))
   done
   i=0
   while [ $i -lt $len ]
   do  
-    if [ $"{environments[$i]}" == $D_ENV ]; then
+    if [ "${environments[$i]}" == $D_ENV ]; then
       echo "\n\n condition success"
       export TARGET_USER = target_users[$i]
       export TARGET_PW = target_pass[$i]
