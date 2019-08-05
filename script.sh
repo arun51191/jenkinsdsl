@@ -3,13 +3,13 @@ RED='\033[0;31m'
 NOW=$(date +'%d-%m-%Y-%H:%M:%S')
 if [ $S_ENV != $D_ENV ||! -z $DATABASE ]; then
 
-  environments = ("dev" "uat" "int")
-  source_users = ($devuser $uatuser $intuser)
-  source_pass  = ($devpass $uatpass $intpass)
-  target_users = ($devuser $uatuser $intuser)
-  target_pass  = ($devpass $uatpass $intpass)
-  db_hosts     = (dev.cyscy6raao4x.ap-south-1.rds.amazonaws.com uat.cyscy6raao4x.ap-south-1.rds.amazonaws.com myint.cyscy6raao4x.ap-south-1.rds.amazonaws.com)
-  i = 0
+  environments=("dev" "uat" "int")
+  source_users=($devuser $uatuser $intuser)
+  source_pass=($devpass $uatpass $intpass)
+  target_users=($devuser $uatuser $intuser)
+  target_pass=($devpass $uatpass $intpass)
+  db_hosts=(dev.cyscy6raao4x.ap-south-1.rds.amazonaws.com uat.cyscy6raao4x.ap-south-1.rds.amazonaws.com myint.cyscy6raao4x.ap-south-1.rds.amazonaws.com)
+  i=0
 
   while [ $i -lt $environments ]
   do
