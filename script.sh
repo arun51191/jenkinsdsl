@@ -10,9 +10,9 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
   db_hosts=(dev.cyscy6raao4x.ap-south-1.rds.amazonaws.com uat.cyscy6raao4x.ap-south-1.rds.amazonaws.com myint.cyscy6raao4x.ap-south-1.rds.amazonaws.com)
   i=0
   len=${#environments[*]}
-  echo -e "\n\ni = $i"
   while [ $i -lt $len ]
   do
+    echo -e "environments[$i]\n\n"
     if [ environments[$i] == $S_ENV ]; then
       echo -e "\n\ncondition success"
       export SOURCE_USER = source_users[$i]
@@ -21,9 +21,7 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
     fi
     i=$((i+1))
   done
-  echo -e "\n\ni = $i"
   i=0
-  echo -e "\n\ni = $i"
   while [ $i -lt $len ]
   do  
     if [ environments[$i] == $D_ENV ]; then
@@ -34,7 +32,6 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
     fi
     i=$((i+1)) 
   done
-  echo -e "\n\ni = $i"
   echo "Attempting to dump from $SOURCE_DB ..."
 
   echo "running mysqldump --verbose --single-transaction --max-allowed-packet=1GB --extended-insert -h $SOURCE_DB -u $SOURCE_USER -pxxxx $DATABASE | gzip -7 > $DATABASE.sql.gz"
