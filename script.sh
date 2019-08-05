@@ -2,7 +2,7 @@
 RED='\033[0;31m'
 NOW=$(date +'%d-%m-%Y-%H:%M:%S')
 if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
-
+  echo -e "Inside main block"
   environments=("dev" "uat" "int")
   source_users=($devuser $uatuser $intuser)
   source_pass=($devpass $uatpass $intpass)
@@ -14,6 +14,7 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
 
   while [ $i -lt $len ]
   do
+    echo -e "Inside while loop 1"
     if [ environments[$i] == $S_ENV ]; then
       export SOURCE_USER = source_users[$i]
       export SOURCE_PW = source_pass[$i]
@@ -21,10 +22,11 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
     fi
     let "i++"
   done
-
+ 
   i=0
   while [ $i -lt $len ]
   do
+    echo -e "Inside while loop2"
     if [ environments[$i] == $D_ENV ]; then
       export TARGET_USER = target_users[$i]
       export TARGET_PW = target_pass[$i]
