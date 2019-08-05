@@ -1,7 +1,7 @@
 #!/bin/bash -e
 RED='\033[0;31m'
 NOW=$(date +'%d-%m-%Y-%H:%M:%S')
-if [ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " "]; then
+if [ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]; then
 
   environments=("dev" "uat" "int")
   source_users=($devuser $uatuser $intuser)
