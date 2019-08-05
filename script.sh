@@ -13,6 +13,7 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
   while [ $i -lt $len ]
   do
     echo -e "environments[$i]\n\n"
+    echo -e "$S_ENV\n\n"
     if [ environments[$i] == $S_ENV ]; then
       echo -e "\n\ncondition success"
       export SOURCE_USER = source_users[$i]
