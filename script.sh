@@ -19,7 +19,7 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
       export SOURCE_PW = source_pass[$i]
       export SOURCE_DB = db_hosts[$i]
     fi
-    i=`expr $i+1` 
+    let "i++"
   done
 
   i=0
@@ -30,7 +30,7 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
       export TARGET_PW = target_pass[$i]
       export TARGET_DB = db_hosts[$i]
     fi
-    i=`expr $i+1` 
+    let "i++" 
   done
 
   echo "Attempting to dump from $SOURCE_DB ..."
