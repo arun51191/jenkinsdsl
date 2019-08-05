@@ -10,7 +10,7 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
   target_pass=($devpass $uatpass $intpass)
   db_hosts=(dev.cyscy6raao4x.ap-south-1.rds.amazonaws.com uat.cyscy6raao4x.ap-south-1.rds.amazonaws.com myint.cyscy6raao4x.ap-south-1.rds.amazonaws.com)
   i=0
-  len = ${#environments[*]}
+  len=${#environments[*]}
 
   while [ $i -lt $len ]
   do
@@ -19,10 +19,10 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
       export SOURCE_PW = source_pass[$i]
       export SOURCE_DB = db_hosts[$i]
     fi
-    i = 'expr $i+1' 
+    i='expr $i+1' 
   done
 
-  i = 0
+  i=0
   while [ $i -lt $len ]
   do
     if [environments[$i] == $D_ENV]; then
@@ -30,7 +30,7 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
       export TARGET_PW = target_pass[$i]
       export TARGET_DB = db_hosts[$i]
     fi
-    i = 'expr $i+1' 
+    i='expr $i+1' 
   done
 
   echo "Attempting to dump from $SOURCE_DB ..."
