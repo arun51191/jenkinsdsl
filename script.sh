@@ -3,39 +3,36 @@ RED='\033[0;31m'
 NOW=$(date +'%d-%m-%Y-%H:%M:%S')
 if [ $S_ENV != $D_ENV ||! -z $DATABASE ]; then
 
-  if [ $S_ENV == "RA_DEV" ]; then
-    export SOURCE_DB="dev.cyscy6raao4x.ap-south-1.rds.amazonaws.com"
-    export SOURCE_USER=$devuser
-    export SOURCE_PW=$devpass
- 
-  elif [ $S_ENV == "RA_UAT" ]; then 
-    export SOURCE_DB="uat.cyscy6raao4x.ap-south-1.rds.amazonaws.com"
-    export SOURCE_USER=$uatuser
-    export SOURCE_PW=$uatpass
+  environments = ("dev" "uat" "int")
+  source_users = ($devuser $uatuser $intuser)
+  source_pass  = ($devpass $uatpass $intpass)
+  target_users = ($devuser $uatuser $intuser)
+  target_pass  = ($devpass $uatpass $intpass)
+  db_hosts     = (dev.cyscy6raao4x.ap-south-1.rds.amazonaws.com uat.cyscy6raao4x.ap-south-1.rds.amazonaws.com myint.cyscy6raao4x.ap-south-1.rds.amazonaws.com)
+  i = 0
 
-  else
-    export SOURCE_DB="myint.cyscy6raao4x.ap-south-1.rds.amazonaws.com"
-    export SOURCE_USER=$intuser
-    export SOURCE_PW=$intpass
-  fi
+  while [ $i -lt $environments ]
+  do
+    if [environments[$i] == $S_ENV] then
+      export SOURCE_USER = source_users[$i]
+      export SOURCE_PW = source_pass[$i]
+      export SOURCE_DB = db_hosts[$i]
+      break;
+    fi
+    i = 'expr $i+1' 
+  done
 
-  if [ $D_ENV == "RA_DEV" ]; then
-    export TARGET_DB="dev.cyscy6raao4x.ap-south-1.rds.amazonaws.com"
-    export TARGET_USER=$devuser
-    export TARGET_PW=$devpass
-
-  elif [ $D_ENV == "RA_UAT" ]; then 
-    export TARGET_DB="uat.cyscy6raao4x.ap-south-1.rds.amazonaws.com"
-    export TARGET_USER=$uatuser
-    export TARGET_PW=$uatpass
-
-  else
-
-    export TARGET_DB="myint.cyscy6raao4x.ap-south-1.rds.amazonaws.com"
-    export TARGET_USER=$intuser
-    export TARGET_PW=$intpass
-
-  fi
+  i = 0
+  while [ $i -lt $environments ]
+  do
+    if [environments[$i] == $D_ENV] then
+      export TARGET_USER = target_users[$i]
+      export TARGET_PW = target_pass[$i]
+      export TARGET_DB = db_hosts[$i]
+      break;
+    fi
+    i = 'expr $i+1' 
+  done
 
   echo "Attempting to dump from $SOURCE_DB ..."
 
