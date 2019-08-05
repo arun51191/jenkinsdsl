@@ -14,16 +14,16 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
 
   while [ $i -lt $len ]
   do
-    echo -e "Inside while loop 1"
+    echo -e "\n\nInside while loop 1"
     if [ environments[$i] == $S_ENV ]; then
       export SOURCE_USER = source_users[$i]
       export SOURCE_PW = source_pass[$i]
       export SOURCE_DB = db_hosts[$i]
     fi
-    let "i++"
+    i=$((i+1))
     echo -e "$i"
   done
- 
+  echo -e "\n\nout of while loop1"
   i=0
   while [ $i -lt $len ]
   do
@@ -33,9 +33,9 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
       export TARGET_PW = target_pass[$i]
       export TARGET_DB = db_hosts[$i]
     fi
-    let "i++" 
+    i=$((i+1)) 
   done
-
+  echo -e "\n\nout of while loop2"
   echo "Attempting to dump from $SOURCE_DB ..."
 
   echo "running mysqldump --verbose --single-transaction --max-allowed-packet=1GB --extended-insert -h $SOURCE_DB -u $SOURCE_USER -pxxxx $DATABASE | gzip -7 > $DATABASE.sql.gz"
