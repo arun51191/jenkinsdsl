@@ -2,19 +2,19 @@
 RED='\033[0;31m'
 NOW=$(date +'%d-%m-%Y-%H:%M:%S')
 if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
-  environments=("dev" "uat" "int")
+  envs=("dev" "uat" "int")
   source_users=($devuser $uatuser $intuser)
   source_pass=($devpass $uatpass $intpass)
   target_users=($devuser $uatuser $intuser)
   target_pass=($devpass $uatpass $intpass)
   db_hosts=(dev.cyscy6raao4x.ap-south-1.rds.amazonaws.com uat.cyscy6raao4x.ap-south-1.rds.amazonaws.com myint.cyscy6raao4x.ap-south-1.rds.amazonaws.com)
   i=0
-  len=${#environments[*]}
+  len=${#envs[*]}
   while [ $i -lt $len ]
   do
-    echo -e $environments[$i]}
+    echo -e ${envs[$i]}
     echo -e "$S_ENV\n\n"
-    if [ ${environments[$i]} == $S_ENV ]; then
+    if [ ${envs[$i]} == $S_ENV ]; then
       echo -e "\n\ncondition success"
       export SOURCE_USER = ${source_users[$i]}
       export SOURCE_PW = ${source_pass[$i}
@@ -25,7 +25,7 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
   i=0
   while [ $i -lt $len ]
   do  
-    if [ ${environments[$i]} == $D_ENV ]; then
+    if [ ${envs[$i]} == $D_ENV ]; then
       echo "\n\n condition success"
       export TARGET_USER = target_users[$i]
       export TARGET_PW = target_pass[$i]
