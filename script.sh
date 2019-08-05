@@ -14,23 +14,23 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
 
   while [ $i -lt $len ]
   do
-    if [environments[$i] == $S_ENV]; then
+    if [ environments[$i] == $S_ENV ]; then
       export SOURCE_USER = source_users[$i]
       export SOURCE_PW = source_pass[$i]
       export SOURCE_DB = db_hosts[$i]
     fi
-    i='expr $i+1' 
+    i=`expr $i+1` 
   done
 
   i=0
   while [ $i -lt $len ]
   do
-    if [environments[$i] == $D_ENV]; then
+    if [ environments[$i] == $D_ENV ]; then
       export TARGET_USER = target_users[$i]
       export TARGET_PW = target_pass[$i]
       export TARGET_DB = db_hosts[$i]
     fi
-    i='expr $i+1' 
+    i=`expr $i+1` 
   done
 
   echo "Attempting to dump from $SOURCE_DB ..."
