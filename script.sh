@@ -17,7 +17,6 @@ if [ $S_ENV != $D_ENV ||! -z $DATABASE ]; then
       export SOURCE_USER = source_users[$i]
       export SOURCE_PW = source_pass[$i]
       export SOURCE_DB = db_hosts[$i]
-      break;
     fi
     i = 'expr $i+1' 
   done
@@ -29,7 +28,6 @@ if [ $S_ENV != $D_ENV ||! -z $DATABASE ]; then
       export TARGET_USER = target_users[$i]
       export TARGET_PW = target_pass[$i]
       export TARGET_DB = db_hosts[$i]
-      break;
     fi
     i = 'expr $i+1' 
   done
