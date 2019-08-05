@@ -2,7 +2,6 @@
 RED='\033[0;31m'
 NOW=$(date +'%d-%m-%Y-%H:%M:%S')
 if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
-  echo -e "Inside main block"
   environments=("dev" "uat" "int")
   source_users=($devuser $uatuser $intuser)
   source_pass=($devpass $uatpass $intpass)
@@ -11,31 +10,31 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
   db_hosts=(dev.cyscy6raao4x.ap-south-1.rds.amazonaws.com uat.cyscy6raao4x.ap-south-1.rds.amazonaws.com myint.cyscy6raao4x.ap-south-1.rds.amazonaws.com)
   i=0
   len=${#environments[*]}
-
+  echo -e "\n\ni = $i"
   while [ $i -lt $len ]
   do
-    echo -e "\n\nInside while loop 1"
     if [ environments[$i] == $S_ENV ]; then
+      echo -e "\n\ncondition success"
       export SOURCE_USER = source_users[$i]
       export SOURCE_PW = source_pass[$i]
       export SOURCE_DB = db_hosts[$i]
     fi
     i=$((i+1))
-    echo -e "$i"
   done
-  echo -e "\n\nout of while loop1"
+  echo -e "\n\ni = $i"
   i=0
+  echo -e "\n\ni = $i"
   while [ $i -lt $len ]
-  do
-    echo -e "Inside while loop2"
+  do  
     if [ environments[$i] == $D_ENV ]; then
+      echo "\n\n condition success"
       export TARGET_USER = target_users[$i]
       export TARGET_PW = target_pass[$i]
       export TARGET_DB = db_hosts[$i]
     fi
     i=$((i+1)) 
   done
-  echo -e "\n\nout of while loop2"
+  echo -e "\n\ni = $i"
   echo "Attempting to dump from $SOURCE_DB ..."
 
   echo "running mysqldump --verbose --single-transaction --max-allowed-packet=1GB --extended-insert -h $SOURCE_DB -u $SOURCE_USER -pxxxx $DATABASE | gzip -7 > $DATABASE.sql.gz"
