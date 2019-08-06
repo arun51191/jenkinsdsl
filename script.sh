@@ -10,6 +10,8 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
   db_hosts=(dev.cyscy6raao4x.ap-south-1.rds.amazonaws.com uat.cyscy6raao4x.ap-south-1.rds.amazonaws.com myint.cyscy6raao4x.ap-south-1.rds.amazonaws.com)
   i=0
   len=${#envs[*]}
+  echo ${source_users[@]}
+  echo ${source_users[2]}
   while [ $i -lt $len ]
   do
     echo -e ${envs[$i]}
