@@ -19,7 +19,7 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
     if [ "${envs[$i]}" == $S_ENV ]; then
       echo -e "\n\ncondition success"
       export SOURCE_USER="${source_users[$i]}"
-      export SOURCE_PW="${source_pass[$i}"
+      export SOURCE_PW="${source_pass[$i]}"
       export SOURCE_DB="${db_hosts[$i]}"
     fi
     i=$((i+1))
