@@ -1,8 +1,8 @@
 #!/bin/bash -e
 RED='\033[0;31m'
 NOW=$(date +'%d-%m-%Y-%H:%M:%S')
-if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
-  envs=("RA_DEV" "RA_UAT" "RA_INT")
+if [[ $SOURCE != $TARGET && ! -z $DATABASE && $DATABASE != " " ]]; then
+  envs=("DEV" "UAT" "INT")
   source_users=($devuser $uatuser $intuser)
   source_pass=($devpass $uatpass $intpass)
   target_users=($devuser $uatuser $intuser)
@@ -15,8 +15,7 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
   while [ $i -lt $len ]
   do
     echo -e ${envs[$i]}
-    echo -e "$S_ENV\n\n"
-    if [ "${envs[$i]}" == $S_ENV ]; then
+    if [ "${envs[$i]}" == $SOURCE ]; then
       echo -e "\n\ncondition success"
       export SOURCE_USER="${source_users[$i]}"
       export SOURCE_PW="${source_pass[$i]}"
@@ -27,7 +26,7 @@ if [[ $S_ENV != $D_ENV && ! -z $DATABASE && $DATABASE != " " ]]; then
   i=0
   while [ $i -lt $len ]
   do  
-    if [ ${envs[$i]} == $D_ENV ]; then
+    if [ ${envs[$i]} == $TARGET ]; then
       echo "\n\n condition success"
       export TARGET_USER="${target_users[$i]}"
       export TARGET_PW="${target_pass[$i]}"
