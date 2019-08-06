@@ -14,7 +14,6 @@ if [[ $SOURCE != $TARGET && ! -z $DATABASE && $DATABASE != " " ]]; then
   echo ${envs[2]}
   while [ $i -lt $len ]
   do
-    echo -e ${envs[$i]}
     if [ "${envs[$i]}" == $SOURCE ]; then
       echo -e "\n\ncondition success"
       export SOURCE_USER="${source_users[$i]}"
@@ -27,7 +26,6 @@ if [[ $SOURCE != $TARGET && ! -z $DATABASE && $DATABASE != " " ]]; then
   while [ $i -lt $len ]
   do  
     if [ ${envs[$i]} == $TARGET ]; then
-      echo "\n\n condition success"
       export TARGET_USER="${target_users[$i]}"
       export TARGET_PW="${target_pass[$i]}"
       export TARGET_DB="${db_hosts[$i]}"
