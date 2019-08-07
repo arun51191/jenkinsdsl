@@ -1,6 +1,12 @@
 #!/bin/bash -e
 RED='\033[0;31m'
 NOW=$(date +'%d-%m-%Y-%H:%M:%S')
+touch scrap.txt
+ls -ltr
+function cleanup {
+  rm -rf scrap.txt
+}
+trap finish EXIT
 if [[ $SOURCE != $TARGET && ! -z $DATABASE && $DATABASE != " " ]]; then
   envs=("DEV" "UAT" "INT")
   source_users=($devuser $uatuser $intuser)
