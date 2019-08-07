@@ -6,7 +6,7 @@ ls -ltr
 function cleanup {
   rm -rf scrap.txt
 }
-trap finish EXIT
+trap cleanup EXIT
 if [[ $SOURCE != $TARGET && ! -z $DATABASE && $DATABASE != " " ]]; then
   envs=("DEV" "UAT" "INT")
   source_users=($devuser $uatuser $intuser)
