@@ -2,9 +2,12 @@
 RED='\033[0;31m'
 NOW=$(date +'%d-%m-%Y-%H:%M:%S')
 touch scrap.txt
+echo "files in pwd"
 ls -ltr
 function cleanup {
   rm -rf scrap.txt
+  echo "files in pwd"
+  ls -ltr
 }
 trap cleanup EXIT
 if [[ $SOURCE != $TARGET && ! -z $DATABASE && $DATABASE != " " ]]; then
